@@ -1,4 +1,4 @@
-/*IDEA: does not work exactly as supposed.
+/*IDEA: does not work exactly as supposed. This should work with recursion.
 Теперь возьмём задачу, где люди идентичны, и группы тоже. То есть надо просто какую-то группу людей разделить на команды.
 Тогда алгоритм немного другой:
 Пусть будет у нас 4 человека и 3 команды.
