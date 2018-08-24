@@ -1,0 +1,16 @@
+https://stackoverflow.com/questions/47360111/enumerate-all-possible-distributions-of-n-balls-into-k-boxes
+
+Very simple ... sort of.
+
+function alloc(balls, boxes):
+
+    if boxes = 1
+        return [balls]
+    else
+       for n in range 0:balls
+           return alloc(balls-n, boxes-1)
+
+That's the basic recursion logic: pick each possible quantity of balls, then recur on the remaining balls and one box fewer.
+
+also look here:
+https://blogs.msdn.microsoft.com/oldnewthing/20141027-00/?p=43763
