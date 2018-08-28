@@ -25,7 +25,7 @@ void print(int N, int *a)
         printf("%d  :  ", a[i]);
 }
 
-int * bub1(int N, int *b)    //Non-optimized Bubble sorting (desceding)
+void * bub1(int N, int *b)    //Non-optimized Bubble sorting (desceding)
 {
     int swap = 0;
     int ops = 0;
