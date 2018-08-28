@@ -25,7 +25,7 @@ void print(int N, int *a)
         printf("%d  :  ", a[i]);
 }
 
-int * bub1(int N, int b[])    //Non-optimized Bubble sorting (desceding)
+int * bub1(int N, int *b)    //Non-optimized Bubble sorting (desceding)
 {
     int swap = 0;
     int ops = 0;
@@ -35,7 +35,7 @@ int * bub1(int N, int b[])    //Non-optimized Bubble sorting (desceding)
         for (int j = 0; j < N-1; j++)
         {
             ops++;
-            if (b[j] < b[j+1]) 1
+            if (b[j] < b[j+1])
             {
                 swap = b[j]; 
                 b[j] = b[j+1];
@@ -44,10 +44,9 @@ int * bub1(int N, int b[])    //Non-optimized Bubble sorting (desceding)
         }
     }
     printf("There are %d operations in non-optimized Bubble sorting", ops);
-    return b;
 }
 
-int * bub2(int N, int b[])    //Optimized Bubble sorting (desceding)
+void * bub2(int N, int *b)    //Optimized Bubble sorting (desceding)
 {
     int swap = 0;
     int flag = 0;
@@ -70,10 +69,9 @@ int * bub2(int N, int b[])    //Optimized Bubble sorting (desceding)
         if (flag == 0) break;;
     }
     printf( "There are %d operations in optimized Bubble sorting", ops );
-    return b;
 }
 
-int * shakerSort(int N, int b[])    //optimized Shaker sorting (asceding)
+void * shakerSort(int N, int *b)    //optimized Shaker sorting (asceding)
 {
     int swap = 0;
     int flag = 0;
@@ -108,7 +106,6 @@ int * shakerSort(int N, int b[])    //optimized Shaker sorting (asceding)
         if (flag == 0) break;;
     }
     printf( "There are %d operations in optimized Shaker sorting", ops );
-    return b;
 }
 
 int binSearch (int N, int b[], int key)    //Binary search on asceding array as a function
@@ -144,7 +141,7 @@ int main()
     srand(time(NULL));
     int a[N]; //initialize array
     int b[N]; //for sorting. Should be reset after each sorting.
-    int *c;
+
     for (int i = 0; i < N; i++) //fill up the array with random numbers
     {
         a[i] = rand()%100;
@@ -154,21 +151,21 @@ int main()
     printf( "O(n^2) for sorting in the worst case is: %d\n", N*N);
     std:: copy(a, a+N, b);
     start_time = getUnixTime();
-    c = bub1(N, b);
+    bub1(N, b);
     stop_time = getUnixTime();
     difference = stop_time - start_time;
     printf( "\nPerformance of non-optimized bubble: %lf\n", difference );
-    
+
     std:: copy(a, a+N, b);
     start_time = getUnixTime();
-    c = bub2(N, b);
+    bub2(N, b);
     stop_time = getUnixTime();
     difference = stop_time - start_time;
     printf( "\nPerformance of optimized bubble: %lf\n", difference );
     
     std:: copy(a, a+N, b);
     start_time = getUnixTime();
-    c = shakerSort(N, b); //here we should do acceding sort in order to make classical Binary search
+    shakerSort(N, b); //here we should do acceding sort in order to make classical Binary search
     stop_time = getUnixTime();
     difference = stop_time - start_time;
     printf( "\nPerformance of optimized shaker: %lf\n", difference );
@@ -177,12 +174,12 @@ int main()
     printf( "----------------------------------------------------------------------------------------\n" );
     printf("Enter a number to search (0-99): ");
     scanf ( "%i" , &key );
-    printf("\nNumber was found at position: %i\n", binSearch(N, c, key));
+    printf("\nNumber was found at position: %i\n", binSearch(N, b, key));
     
     //printf("Initial array: \n");
     //print(N, a);    
     //printf("\nOrdered array: \n");
-    //print(N, c);
+    //print(N, b);
 
     return 0;
 }
